@@ -1,0 +1,245 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <meta name="description" content="She Whom I Love — a romantic poem by Jason.">
+  <meta name="author" content="Jason">
+  <meta property="og:title" content="She Whom I Love — Jason">
+  <meta property="og:description" content="A short love poem written by Jason.">
+  <meta name="theme-color" content="#14080d">
+
+  <title>She Whom I Love — Jason</title>
+
+  <style>
+    * { box-sizing: border-box; }
+
+    body {
+      margin: 0;
+      min-height: 100vh;
+      overflow-x: hidden;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      font-family: Georgia, "Times New Roman", serif;
+      color: #fff;
+      background:
+        radial-gradient(circle at 50% 20%, rgba(170, 30, 80, .25), transparent 35%),
+        linear-gradient(135deg, #090307, #1b080f 55%, #080307);
+    }
+
+    .hearts {
+      position: fixed;
+      inset: 0;
+      pointer-events: none;
+      overflow: hidden;
+      z-index: 0;
+    }
+
+    .heart {
+      position: absolute;
+      bottom: -60px;
+      width: 18px;
+      height: 18px;
+      background: rgba(255, 105, 150, .55);
+      transform: rotate(45deg);
+      animation: float 10s linear infinite;
+      filter: blur(.2px);
+    }
+
+    .heart::before, .heart::after {
+      content: "";
+      position: absolute;
+      width: 18px;
+      height: 18px;
+      border-radius: 50%;
+      background: inherit;
+    }
+
+    .heart::before { left: -9px; }
+    .heart::after { top: -9px; }
+
+    .heart:nth-child(1) { left: 8%; animation-delay: 0s; animation-duration: 9s; }
+    .heart:nth-child(2) { left: 20%; animation-delay: 3s; animation-duration: 12s; }
+    .heart:nth-child(3) { left: 35%; animation-delay: 1s; animation-duration: 10s; }
+    .heart:nth-child(4) { left: 50%; animation-delay: 5s; animation-duration: 13s; }
+    .heart:nth-child(5) { left: 65%; animation-delay: 2s; animation-duration: 11s; }
+    .heart:nth-child(6) { left: 78%; animation-delay: 4s; animation-duration: 9s; }
+    .heart:nth-child(7) { left: 91%; animation-delay: 1.5s; animation-duration: 14s; }
+
+    @keyframes float {
+      0% { transform: translateY(0) rotate(45deg) scale(.7); opacity: 0; }
+      10% { opacity: .7; }
+      90% { opacity: .25; }
+      100% { transform: translateY(-115vh) rotate(45deg) scale(1.2); opacity: 0; }
+    }
+
+    .card {
+      position: relative;
+      z-index: 1;
+      width: min(92%, 760px);
+      margin: 35px auto;
+      padding: 55px 35px;
+      text-align: center;
+      border: 1px solid rgba(255, 180, 205, .25);
+      border-radius: 28px;
+      background: rgba(20, 7, 13, .76);
+      backdrop-filter: blur(14px);
+      box-shadow: 0 25px 80px rgba(0,0,0,.55),
+                  0 0 50px rgba(220, 50, 100, .12);
+      animation: appear 1.4s ease both;
+    }
+
+    @keyframes appear {
+      from { opacity: 0; transform: translateY(25px) scale(.97); }
+      to { opacity: 1; transform: translateY(0) scale(1); }
+    }
+
+    .small-heart {
+      font-size: 30px;
+      animation: pulse 1.8s ease-in-out infinite;
+    }
+
+    @keyframes pulse {
+      0%, 100% { transform: scale(1); }
+      50% { transform: scale(1.18); }
+    }
+
+    h1 {
+      margin: 12px 0 8px;
+      font-size: clamp(40px, 8vw, 68px);
+      font-weight: normal;
+      letter-spacing: 1px;
+      text-shadow: 0 0 25px rgba(255, 100, 150, .25);
+    }
+
+    .subtitle {
+      margin-bottom: 38px;
+      color: #d9a9b8;
+      font-style: italic;
+      font-size: 17px;
+    }
+
+    .poem {
+      font-size: clamp(18px, 3vw, 22px);
+      line-height: 2;
+    }
+
+    .line {
+      margin: 13px 0;
+      opacity: 0;
+      animation: reveal .8s ease forwards;
+    }
+
+    .line:nth-child(1) { animation-delay: .7s; }
+    .line:nth-child(2) { animation-delay: 1s; }
+    .line:nth-child(3) { animation-delay: 1.3s; }
+    .line:nth-child(4) { animation-delay: 1.6s; }
+    .line:nth-child(5) { animation-delay: 1.9s; }
+    .line:nth-child(6) { animation-delay: 2.2s; }
+
+    @keyframes reveal {
+      from { opacity: 0; transform: translateY(12px); }
+      to { opacity: 1; transform: translateY(0); }
+    }
+
+    .letter {
+      color: #ff6f9c;
+      font-weight: bold;
+      font-size: 1.2em;
+    }
+
+    .divider {
+      width: 80px;
+      height: 1px;
+      margin: 35px auto 22px;
+      background: rgba(255, 180, 205, .45);
+    }
+
+    .signature {
+      color: #d9a9b8;
+      font-size: 16px;
+      font-style: italic;
+    }
+
+    .share {
+      margin-top: 30px;
+      padding: 11px 20px;
+      border: 1px solid rgba(255, 180, 205, .35);
+      border-radius: 999px;
+      color: #fff;
+      background: rgba(255, 105, 150, .12);
+      cursor: pointer;
+      font: inherit;
+      transition: .25s ease;
+    }
+
+    .share:hover {
+      transform: translateY(-2px);
+      background: rgba(255, 105, 150, .22);
+    }
+
+    footer {
+      margin-top: 24px;
+      color: #866a75;
+      font-size: 12px;
+    }
+
+    @media (max-width: 500px) {
+      .card { padding: 42px 22px; }
+      .poem { line-height: 1.8; }
+    }
+  </style>
+</head>
+
+<body>
+  <div class="hearts" aria-hidden="true">
+    <span class="heart"></span><span class="heart"></span>
+    <span class="heart"></span><span class="heart"></span>
+    <span class="heart"></span><span class="heart"></span>
+    <span class="heart"></span>
+  </div>
+
+  <main class="card">
+    <div class="small-heart">♥</div>
+
+    <h1>She Whom I Love</h1>
+    <div class="subtitle">A poem by Jason</div>
+
+    <section class="poem">
+      <p class="line"><span class="letter">B</span>ecause you came into my life, my heart found a reason to smile,</p>
+      <p class="line"><span class="letter">R</span>ight beside you, even ordinary moments feel worthwhile,</p>
+      <p class="line"><span class="letter">E</span>very thought of you makes my heart beat a little faster,</p>
+      <p class="line"><span class="letter">N</span>othing compares to the warmth you bring into my world,</p>
+      <p class="line"><span class="letter">D</span>arling, you’re a beautiful chapter I never want to end,</p>
+      <p class="line"><span class="letter">A</span>nd if love is a journey, I’d choose you again and again.</p>
+    </section>
+
+    <div class="divider"></div>
+    <div class="signature">With love — Jason</div>
+
+    <button class="share" onclick="sharePoem()">♡ Share this poem</button>
+
+    <footer>© 2026 Jason</footer>
+  </main>
+
+  <script>
+    async function sharePoem() {
+      const data = {
+        title: "She Whom I Love",
+        text: "She Whom I Love — A poem by Jason",
+        url: window.location.href
+      };
+
+      if (navigator.share) {
+        try {
+          await navigator.share(data);
+        } catch (e) {}
+      } else {
+        await navigator.clipboard.writeText(window.location.href);
+        alert("Link copied to your clipboard.");
+      }
+    }
+  </script>
+</body>
+</html>
